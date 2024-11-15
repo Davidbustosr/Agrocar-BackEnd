@@ -1,8 +1,7 @@
-// server.js
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const authRoutes = require('./src/routes/authRoutes'); // Asegúrate de que esta ruta sea correcta
+const authRoutes = require('./src/routes/authRoutes');
 
 const app = express();
 
@@ -10,10 +9,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Usar las rutas de autenticación en la raíz ('/')
+// Ruta principal para verificar que el servidor funciona
+app.get('/', (req, res) => {
+  res.send('Servidor funcionando correctamente');
+});
+
+// Usar las rutas de autenticación
 app.use('/', authRoutes);
 
-// Configuración del puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor en funcionamiento en el puerto ${PORT}`);
