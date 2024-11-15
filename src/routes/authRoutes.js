@@ -1,4 +1,4 @@
-// backend/src/routes/authRoutes.js
+// src/routes/authRoutes.js
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
@@ -28,7 +28,7 @@ router.get('/auth/callback', async (req, res) => {
 
     const { access_token, refresh_token, expires_in } = response.data;
 
-    // Aquí puedes guardar el access_token en la sesión, en la base de datos o devolverlo a React
+    // Devolver los tokens al frontend o manejar como sea necesario
     res.json({ access_token, refresh_token, expires_in });
   } catch (error) {
     console.error('Error al obtener el token de acceso:', error);
